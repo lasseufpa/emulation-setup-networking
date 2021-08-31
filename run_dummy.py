@@ -5,15 +5,16 @@ from mininet.topo import SingleSwitchTopo
 from mininet.cli import CLI
 
 from src.routing.mininet_based.routing import StaticRouter 
-    
+
+with open("tools/sflow-rt/extras/sflow.py") as f:
+    exec(f.read())
+
 def main():
     ### Init network
 
     # Compile and run sFlow helper script
     # - configures sFlow on OVS
     # - posts topology to sFlow-RT
-    with open("tools/sflow-rt/extras/sflow.py") as f:
-        exec(f.read())
 
     topo = SingleSwitchTopo(2)
     net = Mininet(topo=SingleSwitchTopo(2), link=TCLink, controller=RemoteController)
