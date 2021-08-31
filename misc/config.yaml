@@ -1,0 +1,16 @@
+metrics:
+  names: 
+    - "sflow_ifoutoctets"
+    - "sflow_ifinoctets"
+    - "sflow_ifoutpkts"
+    - "sflow_ifinpkts"
+    - "sflow_ifoutdiscards"
+    - "sflow_ifindiscards"
+    - "sflow_ifouterrors"
+    - "sflow_ifinerrors"
+    - "sflow_ifoututilization"
+    - "sflow_ifinutilization"
+  initial: "1626377715"
+  end: "1626385494"
+  step: "1s"
+  prometheus_server: "http://localhost:9090"
