@@ -19,7 +19,7 @@ dir_exists $PROMETHEUS_DIR
 dir_exists $SETUP_DIR
 
 # change this to your liking
-PROJECT_NAME=testbed
+PROJECT_NAME=emulation
 
 # do not change this
 MAIN_DIR=~/"tmux_logs"
