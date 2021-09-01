@@ -54,6 +54,7 @@ print("Step 4. Install SFLOW")
 if os.path.exists("sflow-rt") == False:
     run_command('wget  https://inmon.com/products/sFlow-RT/sflow-rt.tar.gz')
     run_command('tar  -xvzf  sflow-rt.tar.gz')
+    run_command('sflow-rt/get-app.sh sflow-rt mininet-dashboard')
     os.chdir(setup_path)
 
 print("Step 5. Install GRAFANA")
@@ -75,5 +76,6 @@ if os.path.exists("prometheus-2.26.0.linux-amd64") == False:
     run_command('wget  https://github.com/prometheus/prometheus/releases/download/v2.26.0/prometheus-2.26.0.linux-amd64.tar.gz')
     run_command('tar  -xvzf  prometheus-2.26.0.linux-amd64.tar.gz')
     os.chdir(setup_path)
+    run_command('cp prometheus.yml tools/prometheus-2.26.0.linux-amd64/')
 
 print("installation completed !!!")
