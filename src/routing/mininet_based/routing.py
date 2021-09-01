@@ -25,7 +25,7 @@ class BaseRouter(Topology, NameTrans):
 
         #print(path)
 
-        uri = 'http://127.0.0.1:5000/deploy'
+        uri = 'http://127.0.0.1:5000/route'
         data = {
             "switchId": 0,
             "portIn": 0,
