@@ -18,30 +18,27 @@ mod_uri = 'http://localhost:8080/stats/flowentry/modify'
 port_desc_uri = 'http://localhost:8080/stats/portdesc/'
 number_of_switch = 'http://localhost:8080/stats/switches'
 
-
-class changeSwitch(object):
+class Manager(object):
     def __init__(self):
         self.high_priority = 500
         self.low_priority = 0
 
         self.switches = {}
-
+        
     def reset(self):
         self.switches = {}
 
-    def manage_switch_traffic(self, switch, iface_port, delay, limit, rate, loss, type_request):
+    def manage_switch_traffic(self, type_request, switch, iface_port, delay=0, limit=0, rate=0, loss=0):
         if type_request == 'delay':
             subprocess.run(['sudo', 'tc','qdisc','change','dev',
-            's{}-eth{}'.format(int(switch), int(iface_port)), 'handle', '10:', 'netem', 'delay', '{}'.format(delay)])
+                f's{switch}-eth{iface_port}', 'handle', '10:', 'netem', 'delay', f'{delay}ms'])
         elif type_request == 'rate':
             subprocess.run(['sudo', 'tc','qdisc','replace','dev',
-            's{}-eth{}'.format(int(switch), int(iface_port)), 'root', 'netem', 'delay', 
-            '{}ms'.format(delay), 'rate', '{}'.format(rate),'limit','{}'.format(limit)])
+                f's{switch}-eth{iface_port}', 'root', 'netem', 'delay', 
+                f'{delay}ms', 'rate', f'{rate}','limit', f'{limit}'])
         elif type_request == 'loss':
             subprocess.run(['sudo', 'tc','qdisc','change','dev',
-            's{}-eth{}'.format(int(switch), int(iface_port)), 'handle', '10:', 'netem', 'loss', '{}'.format(loss)])
-        elif type_request == 'list':
-            subprocess.run(['sudo', 'tc','-p','-s', '-d', 'qdisc', 'show', 'dev', 's{}-eth{}'.format(int(switch), int(iface_port))])
+                f's{switch}-eth{iface_port}', 'handle', '10:', 'netem', 'loss', f'{loss}'])
             
     def change_switch_route(self, switch, portOut, portIn, hostOrigin, hostDestiny):
         if switch not in self.switches:
@@ -97,8 +94,6 @@ class changeSwitch(object):
         r = requests.post(url=url, json=change_table)
         return r
 
-
-
     def add_flow_entry(self, url, switch_id, table_id, priority, in_port, host, net_code, out_port):
         ip_type = "ipv4_dst"
         if net_code == 2054:
@@ -131,6 +126,3 @@ class changeSwitch(object):
             "table_id": table_id, "priority": priority, "flags": 1}
         r = requests.post(url=url, json=clean_flows)
         return r
-
-  
-
