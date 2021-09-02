@@ -24,11 +24,11 @@ def change_mininet_switch_traffic():
     req = request.json
 
     if req['type'] == 'delay':
-        manager.manage_switch_traffic(req['type'], req['switchId'], req['ifacePort'], delay=req['delay'])
+        manager.manage_switch_traffic(req['type'], req['switchId'], req['ifacePort'], delay=req['value'])
     elif req['type'] == 'rate':
-        manager.manage_switch_traffic(req['type'], req['switchId'], req['ifacePort'], rate=req['rate'])
+        manager.manage_switch_traffic(req['type'], req['switchId'], req['ifacePort'], rate=req['value'])
     elif req['type'] == 'loss':
-        manager.manage_switch_traffic(req['type'], req['switchId'], req['ifacePort'], loss=req['loss'])
+        manager.manage_switch_traffic(req['type'], req['switchId'], req['ifacePort'], loss=req['value'])
 
     return req
 
