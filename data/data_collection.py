@@ -23,7 +23,7 @@ def main():
                 params={'query': metric,
                         'start': config["initial"],
                         'end': config["end"],
-                        'step': config["step"]
+                        'step': config["resolution"]
                         })
 
         print(response.request.url)
