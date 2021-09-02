@@ -66,7 +66,7 @@ You can emulate any network topology with containernet, which uses the same inte
 
 For further information on implementing custom network topologies on Mininet, please check Mininet [documentation](https://github.com/mininet/mininet/wiki/Introduction-to-Mininet#creating-topologies).
 
-We also provided an example of a custom network topology, the NSFNet topology. You can check it out at `src/topologies/nsfnet.py`. You can use it with `run_demo.py` to take a look.
+We also provide an example of a custom network topology, the NSFNet topology. You can check it out at `src/topologies/nsfnet.py`. You can use it with `run_demo.py` to take a look.
 
 We recommend using the following convention when creating a new network topology:
 
