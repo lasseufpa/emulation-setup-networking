@@ -5,6 +5,11 @@ from mininet.topo import SingleSwitchTopo
 from mininet.cli import CLI
 
 from src.routing.mininet_based.routing import StaticRouter 
+from src.topologies.nsfnet import NSFNet
+
+# Compile and run sFlow helper script
+# - configures sFlow on OVS
+# - posts topology to sFlow-RT
 
 with open("tools/sflow-rt/extras/sflow.py") as f:
     exec(f.read())
@@ -12,12 +17,10 @@ with open("tools/sflow-rt/extras/sflow.py") as f:
 def main():
     ### Init network
 
-    # Compile and run sFlow helper script
-    # - configures sFlow on OVS
-    # - posts topology to sFlow-RT
-
     topo = SingleSwitchTopo(2)
-    net = Mininet(topo=SingleSwitchTopo(2), link=TCLink, controller=RemoteController)
+    #topo = NSFNet() # Our NSFNet topology implementation
+    
+    net = Mininet(topo=topo, link=TCLink, controller=RemoteController)
     net.start()
 
     ### Routing

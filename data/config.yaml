@@ -1,0 +1,16 @@
+prometheus_server: "http://localhost:9090"
+initial: "1626377715" # Unix timestamp
+end: "1626385494" # Unix timestamp
+resolution: "1s"
+metrics:
+  - "sflow_ifoutoctets"
+  - "sflow_ifinoctets"
+  - "sflow_ifoutpkts"
+  - "sflow_ifinpkts"
+  - "sflow_ifoutdiscards"
+  - "sflow_ifindiscards"
+  - "sflow_ifouterrors"
+  - "sflow_ifinerrors"
+  - "sflow_ifoututilization"
+  - "sflow_ifinutilization"
+  
