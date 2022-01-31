@@ -76,6 +76,6 @@ if os.path.exists("prometheus-2.26.0.linux-amd64") == False:
     run_command('wget  https://github.com/prometheus/prometheus/releases/download/v2.26.0/prometheus-2.26.0.linux-amd64.tar.gz')
     run_command('tar  -xvzf  prometheus-2.26.0.linux-amd64.tar.gz')
     os.chdir(setup_path)
-    run_command('cp prometheus.yml tools/prometheus-2.26.0.linux-amd64/')
+    run_command('sudo cp prometheus.yml tools/prometheus-2.26.0.linux-amd64/')
 
 print("installation completed !!!")
