@@ -173,4 +173,5 @@ To visualize data in real-time, you need to connect Grafana to Prometheus. Pleas
         sudo  systemctl  start  grafana-server
         sudo  systemctl  is-active  grafana-server
         ```
+ * Dynamic control of the network parameters is currently not working, contact https://github.com/diegodantasf if you need to use it.
 
